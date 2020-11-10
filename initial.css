@@ -1,0 +1,51 @@
+menu,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+a:hover {
+  color: unset;
+  text-decoration: unset;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  font: unset;
+  background: unset;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: unset;
+}
+
+input {
+  border: unset;
+}
+
+input:focus {
+  outline: unset;
+}

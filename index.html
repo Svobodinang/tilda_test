@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="HandheldFriendly" content="true" />
+  <title>Корзина</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="initial.css">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="actions.js" defer></script>
+  <script src="animate.js" defer></script>
+</head>
+
+<body>
+  <main class="main">
+    <div class="main__content">
+      <div class="order block" id="order">
+        <div class="title">
+          <h2>Ваш заказ</h2>
+        </div>
+
+        <div class="order__products">
+          <div class="order__product">
+            <div class="order__product-imgdiv"></div>
+            <div class="order__product-content">
+              <div class="order__product-content-title bold">
+                <span>Example Product</span>
+              </div>
+              <div class="order__product-content-count-and-price">
+                <div class="order__product-content-count">
+                  <div class="order__product-icon">
+                    <img src="https://static.tildacdn.com/lib/linea/c8eecd27-9482-6c4f-7896-3eb09f6a1091/arrows_circle_minus.svg" alt="minus">
+                  </div>
+                  <span class="order__product-content-quantity">1</span>
+                  <div class="order__product-icon">
+                    <img src="https://static.tildacdn.com/lib/linea/c47d1e0c-6880-dc39-ae34-521197f7fba7/arrows_circle_plus.svg" alt="plus">
+                  </div>
+                </div>
+                <div class="order__product-content-price">
+                  <span>490р.</span>
+                </div>
+              </div>
+            </div>
+            <div class="order__product-del order__product-icon">
+              <img src="https://static.tildacdn.com/lib/linea/1bec3cd7-e9d1-2879-5880-19b597ef9f1a/arrows_circle_remove.svg" alt="delete">
+            </div>
+          </div>
+        </div>
+
+        <div class="order__summ">
+          <div class="light order__summ-row">
+            <span>Сумма: </span>
+            <span>490р.</span>
+          </div>
+          <div class="light order__summ-row">
+            <span>Доставка: </span>
+            <span class="delivery-summ">200р.</span>
+          </div>
+          <div class="bold order__summ-row">
+            <span>Итого к оплате: </span>
+            <span class="final-summ">690р.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="user-data block" id="userData">
+        <div class="title">
+          <h2>Ваши данные</h2>
+        </div>
+
+        <div class="input-group">
+          <div class="input-group__title">
+            <label for="name" class="light">Ваше имя*</label>
+          </div>
+          <div class="input-group__input">
+            <input id="name" type="text">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-group__title">
+            <label for="email" class="light">Ваш email*</label>
+          </div>
+          <div class="input-group__input">
+            <input id="email" type="email">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-group__title">
+            <label for="tel" class="light">Ваш телефон*</label>
+          </div>
+          <div class="input-group__input">
+            <input id="tel" type="tel">
+          </div>
+        </div>
+      </div>
+
+      <div class="block delivery" id="delivery">
+        <div class="title">
+          <h2>Доставка</h2>
+        </div>
+
+        <div class="radio-buttons">
+          <div class="radio-buttons__group">
+            <input type="radio" name="delivery" value="express" id="delivery-express" checked>
+            <label for="delivery-express">Курьером</label>
+          </div>
+
+          <div class="radio-buttons__group">
+            <input type="radio" name="delivery" value="pickup" id="delivery-pickup">
+            <label for="delivery-pickup">Самовывоз</label>
+          </div>
+        </div>
+
+        <div class="delivery__express" id="deliveryExpress">
+          <div class="input-group">
+            <div class="input-group__title">
+              <label for="adress" class="light">Ваш адрес*</label>
+            </div>
+            <div class="input-group__input">
+              <input id="adress" type="text">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group__title">
+              <label for="place" class="light">Ваша квартира*</label>
+            </div>
+            <div class="input-group__input">
+              <input id="place" type="text">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group__title">
+              <label for="door-code" class="light">Ваш домофон</label>
+            </div>
+            <div class="input-group__input">
+              <input id="door-code" type="text">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group__title">
+              <label for="comment" class="light">Ваш комментарий курьеру</label>
+            </div>
+            <div class="input-group__input">
+              <textarea name="comment" id="comment" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="delivery__date-time">
+            <div class="input-group">
+              <div class="input-group__title">
+                <label for="date" class="light">Дата доставки*</label>
+              </div>
+              <div class="input-group__input">
+                <input type="date" id="date">
+              </div>
+            </div>
+
+            <div class="delivery__time">
+              <div class="delivery__time-title">
+                <label for="date" class="light">Время доставки*</label>
+              </div>
+              <div class="delivery__time-buttons">
+                <button id="deliveryMorning" class="delivery__time-button">08:00 - 12:00</button>
+                <button id="deliveryAfternoon" class="delivery__time-button">12:00 - 16:00</button>
+                <button id="deliveryDinner" class="delivery__time-button">16:00 - 18:00</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="delivery__pickup" id="deliveryPickup">
+          <div class="input-group-select">
+            <div class="input-group-select__title">
+              <label for="pickup-adress" class="light">Выбериет пункт самовывоза*</label>
+            </div>
+            <div class="input-group-select__input">
+              <select name="pickup-adress" id="pickup-adress">
+                <option>Пункт доставки 1</option>
+                <option>Пункт доставки 2</option>
+                <option>Пункт доставки 3</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="delivery__summ">
+          <div class="bold delivery__summ-row">
+            <span>Итого к оплате: </span>
+            <span class="delivery-summ">200р.</span>
+          </div>
+        </div>
+
+        <div class="input-group-checkbox">
+          <input type="checkbox" name="" id="covid">
+          <label for="covid">Бесконтактная доставка</label>
+        </div>
+      </div>
+
+      <div class="block payment" id="payment">
+        <div class="title">
+          <h2>Оплата</h2>
+        </div>
+
+        <div class="radio-buttons">
+          <div class="radio-buttons__group">
+            <input type="radio" name="payment" value="cash" id="payment-cash" checked>
+            <label for="payment-cash">Наличными<span class="light">при получении</span></label>
+          </div>
+
+          <div class="radio-buttons__group">
+            <input type="radio" name="payment" value="card" id="payment-card" checked>
+            <label for="payment-card">Картой<span class="light">при получении</span></label>
+          </div>
+
+          <div class="radio-buttons__group">
+            <input type="radio" name="payment" value="online" id="payment-online" checked>
+            <label for="payment-online">Онлайн</label>
+          </div>
+        </div>
+
+        <div class="payment__online" id="paymentOnline">
+          <button class="button payment__apple-pay">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.23653 20.0001C4.25993 19.9829 1.79774 13.9067 1.79774 10.8122C1.79774 5.75732 5.58974 4.65068 7.05114 4.65068C7.70974 4.65068 8.41298 4.90931 9.03325 5.13818C9.467 5.29783 9.9156 5.46263 10.1651 5.46263C10.3144 5.46263 10.6663 5.32244 10.977 5.19943C11.6397 4.93564 12.4642 4.60779 13.4243 4.60779C13.4261 4.60779 13.4284 4.60779 13.43 4.60779C14.147 4.60779 16.3208 4.76513 17.6277 6.72779L17.9339 7.18783L17.4933 7.52029C16.8639 7.99521 15.7154 8.86154 15.7154 10.5776C15.7154 12.6101 17.0161 13.3917 17.6409 13.7676C17.9167 13.9336 18.2022 14.1047 18.2022 14.4789C18.2022 14.7232 16.2522 19.9697 13.4203 19.9697C12.7274 19.9697 12.2376 19.7615 11.8056 19.5778C11.3684 19.3918 10.9913 19.2316 10.3682 19.2316C10.0523 19.2316 9.6529 19.381 9.23005 19.5395C8.6522 19.7551 7.99814 20.0001 7.25599 20.0001H7.23653Z" fill="white"/>
+              <path d="M13.7244 0C13.7981 2.65922 11.8964 4.50406 9.99683 4.38836C9.68382 2.26621 11.8961 0 13.7244 0Z" fill="white"/>
+            </svg>
+            Pay
+          </button>
+
+          <div class="input-group">
+            <div class="input-group__title">
+              <label for="card" class="light">Номер карты</label>
+            </div>
+            <div class="input-group__input">
+              <input type="text" id="card">
+            </div>
+          </div>
+
+          <div class="payment__row">
+            <div class="input-group">
+              <div class="input-group__title">
+                <label for="card-date" class="light">ММ/ГГ</label>
+              </div>
+              <div class="input-group__input">
+                <input type="text" id="card-date">
+              </div>
+            </div>
+            <div class="input-group">
+              <div class="input-group__title">
+                <label for="cvv" class="light">CVV</label>
+              </div>
+              <div class="input-group__input">
+                <input type="text" id="cvv">
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group__title">
+              <label for="card-name" class="light">Имя держателя карты</label>
+            </div>
+            <div class="input-group__input">
+              <input type="text" id="card-name">
+            </div>
+          </div>
+        </div>
+
+        <button class="button payment__pay">Оформить заказ</button>
+      </div>
+    </div>
+
+    <div class="main__help">
+      <div class="order block order-help" id="orderHelp">
+        <div class="title">
+          <h2>Ваш заказ</h2>
+        </div>
+
+        <div class="order__products">
+          <div class="order__product">
+            <div class="order__product-imgdiv"></div>
+            <div class="order__product-content">
+              <div class="order__product-content-title bold">
+                <span>Example Product</span>
+              </div>
+              <div class="order__product-content-count-and-price">
+                <div class="order__product-content-count">
+                  <div class="order__product-icon">
+                    <img src="https://static.tildacdn.com/lib/linea/c8eecd27-9482-6c4f-7896-3eb09f6a1091/arrows_circle_minus.svg" alt="minus">
+                  </div>
+                  <span class="order__product-content-quantity">1</span>
+                  <div class="order__product-icon">
+                    <img src="https://static.tildacdn.com/lib/linea/c47d1e0c-6880-dc39-ae34-521197f7fba7/arrows_circle_plus.svg" alt="plus">
+                  </div>
+                </div>
+                <div class="order__product-content-price">
+                  <span>490р.</span>
+                </div>
+              </div>
+            </div>
+            <div class="order__product-del order__product-icon">
+              <img src="https://static.tildacdn.com/lib/linea/1bec3cd7-e9d1-2879-5880-19b597ef9f1a/arrows_circle_remove.svg" alt="delete">
+            </div>
+          </div>
+        </div>
+
+        <div class="order__summ">
+          <div class="light order__summ-row">
+            <span>Сумма: </span>
+            <span>490р.</span>
+          </div>
+          <div class="light order__summ-row">
+            <span>Доставка: </span>
+            <span class="delivery-summ">200р.</span>
+          </div>
+          <div class="bold order__summ-row">
+            <span>Итого к оплате: </span>
+            <span class="final-summ">690р.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
